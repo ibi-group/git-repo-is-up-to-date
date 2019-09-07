@@ -7,7 +7,7 @@ const gitRepoInfo = require('git-repo-info')
  *
  * @typedef {Object} gitRepoIsUpToDateReturnObject
  * @property {string} baseCommit The commit hash of the merge base commit
- * @property {Array<string>} errors A list of all
+ * @property {Array<string>} errors A list of all errors that occured if there are any
  * @property {boolean} isUpToDate true if the repo is up to date
  * @property {string} localCommit The commit hash of the local commit
  * @property {string} remoteCommit The commit hash of the remote commit
