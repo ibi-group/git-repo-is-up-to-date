@@ -6,7 +6,7 @@
   "scripts": {
     "generate-docs": "documentation readme index.js --document-exported=true -g --section=API",
     "jest": "mastarm test",
-    "lint": "mastarm lint",
+    "lint": "mastarm lint *.js",
     "lint-docs": "documentation lint index.js",
     "semantic-release": "semantic-release"
   },
