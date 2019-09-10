@@ -3,6 +3,9 @@
   "version": "0.0.0-development",
   "description": "Check if your git repo exactly matches what is in the remote branch",
   "main": "index.js",
+  "bin": {
+    "git-repo-is-up-to-date": "bin/cli"
+  },
   "scripts": {
     "generate-docs": "documentation readme index.js --document-exported=true -g --section=API",
     "jest": "mastarm test",

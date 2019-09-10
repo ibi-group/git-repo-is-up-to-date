@@ -23,7 +23,7 @@ const gitRepoInfo = require('git-repo-info')
  * @param  {string}  [folder=process.cwd()] A path to a file or directory
  * @return {Promise<gitRepoIsUpToDateReturnObject>}
  */
-export default async function gitRepoIsUpToDate (folder = process.cwd()) {
+module.exports = async function gitRepoIsUpToDate (folder = process.cwd()) {
   let remoteUrl
   try {
     remoteUrl = await origin(folder)
