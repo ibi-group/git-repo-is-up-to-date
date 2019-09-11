@@ -28,15 +28,7 @@ module.exports = async function gitRepoIsUpToDate (folder = process.cwd()) {
   try {
     remoteUrl = await origin(folder)
   } catch (e) {
-    return {
-      baseCommit: null,
-      errors: [e.message],
-      isUpToDate: false,
-      localCommit: null,
-      remoteCommit: null,
-      remoteUrl: null,
-      repoInfo: null
-    }
+    return failWithError(e)
   }
 
   const repoInfo = gitRepoInfo(folder)
@@ -46,8 +38,18 @@ module.exports = async function gitRepoIsUpToDate (folder = process.cwd()) {
   // run some git commands to make sure repo is up to date
   // modified from https://stackoverflow.com/a/3278427/269834
   const { stdout: localCommit } = await execa('git', ['-C', repoRoot, 'rev-parse', '@'])
-  const { stdout: remoteCommit } = await execa('git', ['-C', repoRoot, 'rev-parse', '@{u}'])
-  const { stdout: baseCommit } = await execa('git', ['-C', repoRoot, 'merge-base', '@', '@{u}'])
+  let remoteCommit, baseCommit
+  try {
+    const remoteResult = await execa('git', ['-C', repoRoot, 'rev-parse', '@{u}'])
+    const baseResult = await execa('git', ['-C', repoRoot, 'merge-base', '@', '@{u}'])
+    remoteCommit = remoteResult.stdout
+    baseCommit = baseResult.stdout
+  } catch (e) {
+    // Get branch for error message
+    const { stdout: branches } = await execa('git', ['-C', repoRoot, 'branch'])
+    const branch = branches.split('* ')[1].split('\n')[0]
+    return failWithError(`No upstream configured for branch. May need to run 'git push -u origin ${branch}' for ${repoRoot}`)
+  }
   let isUpToDate = false
   if (localCommit === remoteCommit) {
     // Up-to-date
@@ -83,5 +85,27 @@ module.exports = async function gitRepoIsUpToDate (folder = process.cwd()) {
     remoteCommit,
     remoteUrl,
     repoInfo
+  }
+}
+
+/**
+ * Utility method to return failure status with error message.
+ * @param  {error | string} e error object or error message string
+ * @return {gitRepoIsUpToDateReturnObject}   [description]
+ */
+function failWithError (e) {
+  const error = !e
+    ? 'Failed with unknown error.'
+    : e.message
+      ? e.message
+      : e
+  return {
+    baseCommit: null,
+    errors: [error],
+    isUpToDate: false,
+    localCommit: null,
+    remoteCommit: null,
+    remoteUrl: null,
+    repoInfo: null
   }
 }
