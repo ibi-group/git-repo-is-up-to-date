@@ -9,11 +9,9 @@ node_js:
 script:
   - yarn run lint
   - yarn run lint-docs
-  # the test suite doesn't quite work on Travis because of the way Travis
-  # mucks with repositories
-  # - yarn run jest
+  - yarn run jest
 after_success:
-  - npx semantic-release
+  - yarn run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
