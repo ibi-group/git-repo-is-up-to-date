@@ -81,4 +81,21 @@ describe('git-repo-is-up-to-date', () => {
     const result = await gitRepoIsUpToDate(clonedRepoPath)
     expect(result.isUpToDate).toEqual(false)
   })
+
+  it('should return false on when a new file has been created and committed', async () => {
+    const clonedRepoPath = await cloneRepo()
+
+    // create a new file
+    const newFilePath = path.join(clonedRepoPath, 'tmp.js')
+    await fs.writeFile(newFilePath, 'blah')
+
+    // add file
+    await execa('git', ['add', newFilePath], { cwd: clonedRepoPath })
+
+    // make a commit (don't push)
+    await execa('git', ['commit', '-m', 'add new file'], { cwd: clonedRepoPath })
+
+    const result = await gitRepoIsUpToDate(clonedRepoPath)
+    expect(result.isUpToDate).toEqual(false)
+  })
 })
