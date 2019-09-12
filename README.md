@@ -2,10 +2,35 @@
 
 Check if a git repo exactly matches what is in the remote branch
 
-## CLI
+## Installation
+
+To use the CLI, install the package globally:
+
+```shell
+yarn global add git-repo-is-up-to-date
+```
+
+## CLI Usage
 
 ```shell
 git-repo-is-up-to-date [directory]
+```
+
+## API Usage
+
+```javascript
+const gitRepoIsUpToDate = require('git-repo-is-up-to-date')
+
+async function main () {
+  const result = await gitRepoIsUpToDate()
+  if (result.isUpToDate) {
+    console.log('Is up to date!')
+  } else {
+    console.error('Is not up to date.')
+  }
+}
+
+main()
 ```
 
 ## API
@@ -21,7 +46,7 @@ git-repo-is-up-to-date [directory]
 
 ### gitRepoIsUpToDateReturnObject
 
-[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/c4d6a098602ac2645f2ad7c9e75ba0938401fe27/lib/index.js#L7-L18 "Source code on GitHub")
+[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/8581d574a0dfab701da75e9699d8576ef25f6f87/lib/index.js#L7-L18 "Source code on GitHub")
 
 The return object of the gitRepoIsUpToDate function.
 
@@ -39,7 +64,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### gitRepoIsUpToDate
 
-[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/c4d6a098602ac2645f2ad7c9e75ba0938401fe27/lib/index.js#L28-L91 "Source code on GitHub")
+[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/8581d574a0dfab701da75e9699d8576ef25f6f87/lib/index.js#L28-L91 "Source code on GitHub")
 
 Return a promise with the result of checking if a given folder is a git
 repository where the contents exactly match what is in the remote branch of
