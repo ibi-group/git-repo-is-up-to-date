@@ -1,0 +1,43 @@
+{
+  "name": "git-repo-is-up-to-date",
+  "version": "0.0.0-development",
+  "description": "Check if your git repo exactly matches what is in the remote branch",
+  "main": "lib/index.js",
+  "bin": {
+    "git-repo-is-up-to-date": "bin/cli"
+  },
+  "scripts": {
+    "cover": "mastarm test --coverage",
+    "generate-docs": "documentation readme lib/index.js --markdown-toc --shallow -g --section=API",
+    "jest": "mastarm test",
+    "lint": "mastarm lint __tests__ bin/cli lib",
+    "lint-docs": "documentation lint lib/**/*.js",
+    "semantic-release": "semantic-release",
+    "test": "yarn run lint && yarn run lint-docs && yarn run jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibi-group/git-repo-is-up-to-date.git"
+  },
+  "keywords": [
+    "git"
+  ],
+  "author": "Evan Siroky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ibi-group/git-repo-is-up-to-date/issues"
+  },
+  "homepage": "https://github.com/ibi-group/git-repo-is-up-to-date#readme",
+  "devDependencies": {
+    "documentation": "^12.1.1",
+    "fs-promise": "^2.0.3",
+    "mastarm": "^5.1.3",
+    "semantic-release": "^15.13.24",
+    "tmp-promise": "^2.0.2"
+  },
+  "dependencies": {
+    "execa": "^2.0.4",
+    "git-remote-origin-url": "^3.0.0",
+    "git-repo-info": "^2.1.0"
+  }
+}

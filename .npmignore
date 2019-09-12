@@ -1,0 +1,5 @@
+.DS_Store
+coverage
+test.js
+.travis.yml
+yarn.lock

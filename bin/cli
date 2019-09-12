@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+require('../lib/index')(process.argv[2])
+  .then(result => {
+    if (!result.isUpToDate) {
+      result.errors.forEach(e => console.error(e))
+      process.exit(1)
+    }
+  })
+  .catch(e => {
+    console.error(e)
+    process.exit(1)
+  })
