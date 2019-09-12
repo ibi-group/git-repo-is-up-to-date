@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-require('../index')(process.argv[2])
+require('../lib/index')(process.argv[2])
   .then(result => {
     if (!result.isUpToDate) {
       result.errors.forEach(e => console.error(e))

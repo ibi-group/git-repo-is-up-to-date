@@ -2,15 +2,16 @@
   "name": "git-repo-is-up-to-date",
   "version": "0.0.0-development",
   "description": "Check if your git repo exactly matches what is in the remote branch",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
     "git-repo-is-up-to-date": "bin/cli"
   },
   "scripts": {
-    "generate-docs": "documentation readme index.js --document-exported=true -g --section=API",
+    "cover": "mastarm test --coverage",
+    "generate-docs": "documentation readme lib/index.js --markdown-toc --shallow -g --section=API",
     "jest": "mastarm test",
-    "lint": "mastarm lint *.js",
-    "lint-docs": "documentation lint index.js",
+    "lint": "mastarm lint __tests__ bin/cli lib",
+    "lint-docs": "documentation lint lib/**/*.js",
     "semantic-release": "semantic-release",
     "test": "yarn run lint && yarn run lint-docs && yarn run jest"
   },

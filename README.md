@@ -4,7 +4,7 @@ Check if a git repo exactly matches what is in the remote branch
 
 ## CLI
 
-```
+```shell
 git-repo-is-up-to-date [directory]
 ```
 
@@ -21,7 +21,7 @@ git-repo-is-up-to-date [directory]
 
 ### gitRepoIsUpToDateReturnObject
 
-[index.js:27-74](https://github.com/ibi-group/git-repo-is-up-to-date/blob/c2053e7209cb57f917ea94bb8a30476d39a98a61/index.js#L7-L18 "Source code on GitHub")
+[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/c4d6a098602ac2645f2ad7c9e75ba0938401fe27/lib/index.js#L7-L18 "Source code on GitHub")
 
 The return object of the gitRepoIsUpToDate function.
 
@@ -30,7 +30,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 #### Properties
 
 -   `baseCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the merge base commit
--   `errors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** A list of all
+-   `errors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** A list of all errors that occured if there are any
 -   `isUpToDate` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if the repo is up to date
 -   `localCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the local commit
 -   `remoteCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the remote commit
@@ -39,13 +39,14 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### gitRepoIsUpToDate
 
-[index.js:27-74](https://github.com/ibi-group/git-repo-is-up-to-date/blob/c2053e7209cb57f917ea94bb8a30476d39a98a61/index.js#L27-L74 "Source code on GitHub")
+[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/c4d6a098602ac2645f2ad7c9e75ba0938401fe27/lib/index.js#L28-L91 "Source code on GitHub")
 
-Check if a given folder is a git repository where the contents exactly match
-what is in the remote branch of the repository.
+Return a promise with the result of checking if a given folder is a git
+repository where the contents exactly match what is in the remote branch of
+the repository.
 
 #### Parameters
 
 -   `folder` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** A path to a file or directory (optional, default `process.cwd()`)
 
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[gitRepoIsUpToDateReturnObject](#gitrepoisuptodatereturnobject)>**
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[gitRepoIsUpToDateReturnObject](#gitrepoisuptodatereturnobject)>** 

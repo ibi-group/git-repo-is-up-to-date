@@ -4,7 +4,7 @@ const execa = require('execa')
 const fs = require('fs-promise')
 const tmp = require('tmp-promise')
 
-const gitRepoIsUpToDate = require('./index')
+const gitRepoIsUpToDate = require('../lib/index')
 
 /**
  * Clone this repo into a temp dir and return the path that the repo was cloned
