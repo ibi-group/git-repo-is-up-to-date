@@ -33,7 +33,7 @@ describe('git-repo-is-up-to-date', () => {
     expect(result.isUpToDate).toEqual(false)
   })
 
-  it('should return false on a newly created repository', async () => {
+  it('should return false on a newly created repository with no remote record', async () => {
     // create a temp dir for this test without any git repo
     const tmpDir = await tmp.dir()
 
@@ -62,7 +62,7 @@ describe('git-repo-is-up-to-date', () => {
     expect(result.isUpToDate).toEqual(false)
   })
 
-  it('should return false on when a checked-in file has been edited', async () => {
+  it('should return false when a checked-in file has been edited', async () => {
     const clonedRepoPath = await cloneRepo()
 
     // edit a file
@@ -72,7 +72,7 @@ describe('git-repo-is-up-to-date', () => {
     expect(result.isUpToDate).toEqual(false)
   })
 
-  it('should return false on when a new file has been created', async () => {
+  it('should return false when a new file has been created', async () => {
     const clonedRepoPath = await cloneRepo()
 
     // create a new file
@@ -82,7 +82,7 @@ describe('git-repo-is-up-to-date', () => {
     expect(result.isUpToDate).toEqual(false)
   })
 
-  it('should return false on when a new file has been created and committed', async () => {
+  it('should return false when a new file has been created and committed', async () => {
     const clonedRepoPath = await cloneRepo()
 
     // create a new file
