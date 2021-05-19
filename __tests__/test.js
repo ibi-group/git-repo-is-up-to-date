@@ -90,19 +90,16 @@ describe('git-repo-is-up-to-date', () => {
     await fs.writeFile(newFilePath, 'blah')
 
     // debug git status
-    let statusOut = await execa('git', ['status'], { cwd: clonedRepoPath })
-    console.log(statusOut)
+    await execa('git', ['status'], { cwd: clonedRepoPath })
 
     // add file
-    statusOut = await execa('git', ['add', newFilePath], { cwd: clonedRepoPath })
-    console.log(statusOut)
+    await execa('git', ['add', newFilePath], { cwd: clonedRepoPath })
 
     // debug git status
-    statusOut = await execa('git', ['status'], { cwd: clonedRepoPath })
-    console.log(statusOut)
+    await execa('git', ['status'], { cwd: clonedRepoPath })
 
     // set git config for this repo so that making a commit is possible
-    statusOut = await execa(
+    await execa(
       'git',
       [
         'config',
@@ -111,8 +108,7 @@ describe('git-repo-is-up-to-date', () => {
       ],
       { cwd: clonedRepoPath }
     )
-    console.log(statusOut)
-    statusOut = await execa(
+    await execa(
       'git',
       [
         'config',
@@ -121,16 +117,9 @@ describe('git-repo-is-up-to-date', () => {
       ],
       { cwd: clonedRepoPath }
     )
-    console.log(statusOut)
 
     // make a commit (don't push)
-    try {
-      statusOut = await execa('git', ['commit', '-m', 'add new file'], { cwd: clonedRepoPath })
-      console.log(statusOut)
-    } catch (e) {
-      console.error(e)
-      throw e
-    }
+    await execa('git', ['commit', '-m', 'add new file'], { cwd: clonedRepoPath })
 
     const result = await gitRepoIsUpToDate(clonedRepoPath)
     expect(result.isUpToDate).toEqual(false)
