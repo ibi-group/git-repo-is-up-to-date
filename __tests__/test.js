@@ -101,6 +101,28 @@ describe('git-repo-is-up-to-date', () => {
     statusOut = await execa('git', ['status'], { cwd: clonedRepoPath })
     console.log(statusOut)
 
+    // set git config for this repo so that making a commit is possible
+    statusOut = await execa(
+      'git',
+      [
+        'config',
+        'user.email',
+        'test@ibi-group.com'
+      ],
+      { cwd: clonedRepoPath }
+    )
+    console.log(statusOut)
+    statusOut = await execa(
+      'git',
+      [
+        'config',
+        'user.name',
+        'test'
+      ],
+      { cwd: clonedRepoPath }
+    )
+    console.log(statusOut)
+
     // make a commit (don't push)
     try {
       statusOut = await execa('git', ['commit', '-m', 'add new file'], { cwd: clonedRepoPath })
