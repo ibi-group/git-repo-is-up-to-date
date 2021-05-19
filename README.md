@@ -46,7 +46,7 @@ main()
 
 ### gitRepoIsUpToDateReturnObject
 
-[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/8581d574a0dfab701da75e9699d8576ef25f6f87/lib/index.js#L7-L18 "Source code on GitHub")
+[lib/index.js:28-119](https://github.com/ibi-group/git-repo-is-up-to-date/blob/a37f5016ea8291a0cd7a42998693d476bb407882/lib/index.js#L7-L18 "Source code on GitHub")
 
 The return object of the gitRepoIsUpToDate function.
 
@@ -55,7 +55,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 #### Properties
 
 -   `baseCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the merge base commit
--   `errors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** A list of all errors that occured if there are any
+-   `errors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** A list of all errors that occurred if there are any
 -   `isUpToDate` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if the repo is up to date
 -   `localCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the local commit
 -   `remoteCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the remote commit
@@ -64,7 +64,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### gitRepoIsUpToDate
 
-[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/8581d574a0dfab701da75e9699d8576ef25f6f87/lib/index.js#L28-L91 "Source code on GitHub")
+[lib/index.js:28-119](https://github.com/ibi-group/git-repo-is-up-to-date/blob/a37f5016ea8291a0cd7a42998693d476bb407882/lib/index.js#L28-L119 "Source code on GitHub")
 
 Return a promise with the result of checking if a given folder is a git
 repository where the contents exactly match what is in the remote branch of
