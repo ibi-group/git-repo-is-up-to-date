@@ -89,11 +89,26 @@ describe('git-repo-is-up-to-date', () => {
     const newFilePath = path.join(clonedRepoPath, 'tmp.js')
     await fs.writeFile(newFilePath, 'blah')
 
+    // debug git status
+    let statusOut = await execa('git', ['status'], { cwd: clonedRepoPath })
+    console.log(statusOut)
+
     // add file
-    await execa('git', ['add', newFilePath], { cwd: clonedRepoPath })
+    statusOut = await execa('git', ['add', newFilePath], { cwd: clonedRepoPath })
+    console.log(statusOut)
+
+    // debug git status
+    statusOut = await execa('git', ['status'], { cwd: clonedRepoPath })
+    console.log(statusOut)
 
     // make a commit (don't push)
-    await execa('git', ['commit', '-m', 'add new file'], { cwd: clonedRepoPath })
+    try {
+      statusOut = await execa('git', ['commit', '-m', 'add new file'], { cwd: clonedRepoPath })
+      console.log(statusOut)
+    } catch (e) {
+      console.error(e)
+      throw e
+    }
 
     const result = await gitRepoIsUpToDate(clonedRepoPath)
     expect(result.isUpToDate).toEqual(false)
