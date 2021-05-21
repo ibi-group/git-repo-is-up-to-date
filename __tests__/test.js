@@ -92,6 +92,26 @@ describe('git-repo-is-up-to-date', () => {
     // add file
     await execa('git', ['add', newFilePath], { cwd: clonedRepoPath })
 
+    // set git config for this repo so that making a commit is possible
+    await execa(
+      'git',
+      [
+        'config',
+        'user.email',
+        'test@ibi-group.com'
+      ],
+      { cwd: clonedRepoPath }
+    )
+    await execa(
+      'git',
+      [
+        'config',
+        'user.name',
+        'test'
+      ],
+      { cwd: clonedRepoPath }
+    )
+
     // make a commit (don't push)
     await execa('git', ['commit', '-m', 'add new file'], { cwd: clonedRepoPath })
 

@@ -1,0 +1,33 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test-build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install npm packages using cache
+        uses: bahmutov/npm-install@v1
+      - name: Lint code
+        run: yarn lint
+      - name: Lint docs
+        run: yarn lint-docs
+      - name: Run tests
+        run: yarn jest
+
+      # at this point, the build is successful
+      - name: Semantic Release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn semantic-release

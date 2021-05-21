@@ -39,32 +39,14 @@ main()
 
 #### Table of Contents
 
--   [gitRepoIsUpToDateReturnObject](#gitrepoisuptodatereturnobject)
-    -   [Properties](#properties)
 -   [gitRepoIsUpToDate](#gitrepoisuptodate)
     -   [Parameters](#parameters)
-
-### gitRepoIsUpToDateReturnObject
-
-[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/8581d574a0dfab701da75e9699d8576ef25f6f87/lib/index.js#L7-L18 "Source code on GitHub")
-
-The return object of the gitRepoIsUpToDate function.
-
-Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
-
-#### Properties
-
--   `baseCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the merge base commit
--   `errors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** A list of all errors that occured if there are any
--   `isUpToDate` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if the repo is up to date
--   `localCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the local commit
--   `remoteCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the remote commit
--   `remoteUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The url for the remote repository
--   `repoInfo` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The output of the `git-repo-info` package
+-   [gitRepoIsUpToDateReturnObject](#gitrepoisuptodatereturnobject)
+    -   [Properties](#properties)
 
 ### gitRepoIsUpToDate
 
-[lib/index.js:28-91](https://github.com/ibi-group/git-repo-is-up-to-date/blob/8581d574a0dfab701da75e9699d8576ef25f6f87/lib/index.js#L28-L91 "Source code on GitHub")
+[lib/index.js:15-106](https://github.com/ibi-group/git-repo-is-up-to-date/blob/92e4105b02e4f157750944dbeb8f0ea700ee3249/lib/index.js#L15-L106 "Source code on GitHub")
 
 Return a promise with the result of checking if a given folder is a git
 repository where the contents exactly match what is in the remote branch of
@@ -75,3 +57,21 @@ the repository.
 -   `folder` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** A path to a file or directory (optional, default `process.cwd()`)
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[gitRepoIsUpToDateReturnObject](#gitrepoisuptodatereturnobject)>** 
+
+### gitRepoIsUpToDateReturnObject
+
+[lib/index.js:121-121](https://github.com/ibi-group/git-repo-is-up-to-date/blob/92e4105b02e4f157750944dbeb8f0ea700ee3249/lib/index.js#L108-L119 "Source code on GitHub")
+
+The return object of the gitRepoIsUpToDate function.
+
+Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+#### Properties
+
+-   `baseCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the merge base commit
+-   `errors` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** A list of all errors that occurred if there are any
+-   `isUpToDate` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if the repo is up to date
+-   `localCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the local commit
+-   `remoteCommit` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The commit hash of the remote commit
+-   `remoteUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The url for the remote repository
+-   `repoInfo` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The output of the `git-repo-info` package
