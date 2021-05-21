@@ -89,14 +89,8 @@ describe('git-repo-is-up-to-date', () => {
     const newFilePath = path.join(clonedRepoPath, 'tmp.js')
     await fs.writeFile(newFilePath, 'blah')
 
-    // debug git status
-    await execa('git', ['status'], { cwd: clonedRepoPath })
-
     // add file
     await execa('git', ['add', newFilePath], { cwd: clonedRepoPath })
-
-    // debug git status
-    await execa('git', ['status'], { cwd: clonedRepoPath })
 
     // set git config for this repo so that making a commit is possible
     await execa(
